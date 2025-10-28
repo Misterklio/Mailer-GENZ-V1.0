@@ -16,7 +16,6 @@ const sendBtn = document.getElementById('sendBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const resumeBtn = document.getElementById('resumeBtn');
 const cancelBtn = document.getElementById('cancelBtn');
-const progressContainer = document.getElementById('progressContainer');
 const progressFill = document.getElementById('progressFill');
 const progressPercent = document.getElementById('progressPercent');
 const progressInfo = document.getElementById('progressInfo');
@@ -196,6 +195,14 @@ async function sendNextEmail() {
     
     // Check if all emails sent
     if (currentEmailIndex >= totalEmails) {
+        // Clear all previous status messages
+        setTimeout(() => {
+            // Keep the status area clean by removing all messages except the final one
+            while (statusMessages.children.length > 1) {
+                statusMessages.removeChild(statusMessages.lastChild);
+            }
+        }, 500);
+        
         showStatus(`All ${totalEmails} email(s) sent successfully! 🎉`, 'success');
         resetForm();
         return;
@@ -301,13 +308,27 @@ function showStatus(message, type = 'info') {
     // Add to top of status messages (newest first)
     statusMessages.insertBefore(statusDiv, statusMessages.firstChild);
     
-    // Keep only last 50 messages to prevent memory issues
-    while (statusMessages.children.length > 50) {
+    // Keep only last 5 messages to keep layout clean
+    while (statusMessages.children.length > 5) {
         statusMessages.removeChild(statusMessages.lastChild);
     }
     
     // Scroll to top to show latest status
     statusMessages.scrollTop = 0;
+    
+    // Auto-remove notification after 2 seconds (except for important messages)
+    if (type === 'success' || type === 'info') {
+        setTimeout(() => {
+            if (statusDiv.parentNode === statusMessages) {
+                statusDiv.classList.add('fade-out');
+                setTimeout(() => {
+                    if (statusDiv.parentNode === statusMessages) {
+                        statusMessages.removeChild(statusDiv);
+                    }
+                }, 300);
+            }
+        }, 2000);
+    }
 }
 
 // Reset Form
