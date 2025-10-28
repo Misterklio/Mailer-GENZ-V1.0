@@ -152,6 +152,16 @@ body {
     font-size: 0.95rem;
 }
 
+/* Progress Container below Mailer title */
+.progress-container-main {
+    padding: 15px 20px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    text-align: center;
+}
+
 /* Header */
 .header {
     background: var(--card-bg);
@@ -200,8 +210,8 @@ body {
 
 /* Left Sidebar */
 .sidebar-left {
-    width: 300px;
-    min-width: 300px;
+    width: 400px;
+    min-width: 400px;
     background: rgba(0, 0, 0, 0.3);
     border-right: 1px solid var(--border-color);
     padding: 20px;
@@ -216,13 +226,15 @@ body {
 }
 
 .panel-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
     color: var(--text-primary);
     text-align: center;
-    padding-bottom: 15px;
+    padding: 15px 0;
     border-bottom: 2px solid var(--border-color);
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 8px;
 }
 
 /* Right Content Area */
@@ -452,17 +464,21 @@ input[type="checkbox"]:checked + .checkbox-custom::after {
 }
 
 .status-title {
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--text-secondary);
+    margin: 20px 0;
+    color: var(--text-primary);
     text-align: center;
+    padding: 10px;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 8px;
 }
 
 .status-messages {
-    max-height: 400px;
+    max-height: 600px;
     overflow-y: auto;
     padding-right: 10px;
+    min-height: 300px;
 }
 
 /* Custom Scrollbar for Status Messages */
@@ -495,6 +511,12 @@ input[type="checkbox"]:checked + .checkbox-custom::after {
     animation: slideInLeft 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     word-wrap: break-word;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.status-message.fade-out {
+    opacity: 0;
+    transform: translateX(20px);
 }
 
 @keyframes slideInLeft {
