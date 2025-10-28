@@ -26,6 +26,19 @@
           <span class="window-title">  <i class="fas fa-code"></i>  Mailer-GENZ v1.0  <i class="fas fa-code"></i> </span>
         </div>
 
+        <!-- Progress Indicator below Mailer title -->
+        <div class="progress-container-main">
+            <div class="progress-label">
+                <span>Progress</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-info">
+                <span id="progressInfo">0 of 0 emails sent</span>
+            </div>
+        </div>
 
         <!-- Main Content Area with Sidebar -->
         <div class="main-content">
@@ -33,20 +46,6 @@
             <div class="sidebar-left">
                 <div class="status-panel">
                     <h3 class="panel-title">📊 Sending Status</h3>
-                    
-                    <!-- Progress Container -->
-                    <div class="progress-container-sidebar" id="progressContainer">
-                        <div class="progress-label">
-                            <span>Progress</span>
-                            <span id="progressPercent">0%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progressFill"></div>
-                        </div>
-                        <div class="progress-info">
-                            <span id="progressInfo">0 of 0 emails sent</span>
-                        </div>
-                    </div>
 
                     <!-- Status Messages -->
                     <div class="status-messages-sidebar">
@@ -190,7 +189,7 @@
                 <textarea 
                     id="emailBody" 
                     name="emailBody" 
-                    rows="10" 
+                    rows="5" 
                     placeholder="Enter your email content here..."
                     required
                 ></textarea>
