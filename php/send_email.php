@@ -103,6 +103,7 @@ $headers[] = "X-Priority: 3";
 $headersString = implode("\r\n", $headers);
 
 // Attempt to send email
+
 try {
     $mailSent = mail($recipient, $subject, $processedBody, $headersString);
     
